@@ -6,22 +6,18 @@ class App extends Component {
     super(props)
 
     this.state= {
-      term: ''
     }; 
 
   }
 
   render () {
     return (
-      <input
-        value={this.state.term}
-        onChange={ e => this.onInputChange(e.target.value) } />
+      <div>
+        <h1>Oh shit waddup</h1>
+      </div>
     );
   }
 
-  onInputChange (term) {
-    this.setState({term})
-  }
 }
 
 ReactDOM.render(<App />, document.getElementById('main'));
