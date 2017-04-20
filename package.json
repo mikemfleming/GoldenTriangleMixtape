@@ -1,0 +1,24 @@
+{
+  "name": "golden-triangle-mixtape",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mikemfleming/GoldenTriangleMixtape.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mikemfleming/GoldenTriangleMixtape/issues"
+  },
+  "homepage": "https://github.com/mikemfleming/GoldenTriangleMixtape#readme",
+  "dependencies": {
+    "express": "^4.15.2",
+    "nodemon": "^1.11.0",
+    "react": "^15.5.4"
+  }
+}
