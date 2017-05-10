@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import InputBar from './inputBar.js'
 import MediaList from './mediaList.jsx'
+import YT from './youtube.jsx'
 
 class App extends Component {
   constructor (props) {
@@ -9,7 +10,7 @@ class App extends Component {
 
     this.state = {
       submission: ''
-    }; 
+    } 
 
     this.addToCatalog = this.addToCatalog.bind(this)
 
@@ -28,10 +29,11 @@ class App extends Component {
       <div>
         <InputBar add={this.addToCatalog.bind(this)} handleChange={this.handleChange.bind(this)}/>
         <MediaList media={this.state.submission} />
+        <YT />
       </div>
-    );
+    )
   }
 
 }
 
-ReactDOM.render(<App />, document.getElementById('main'));
+ReactDOM.render(<App />, document.getElementById('main'))
