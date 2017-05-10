@@ -17,6 +17,11 @@ app.use('/app-bundle.js',
   })
 );
 
+app.post('/api/submit', (req, res) => {
+  console.log(req.body)
+  res.end()
+})
+
 var port = process.env.PORT || 8080;
 app.listen(port);
 console.log(`listening on localhost: ${port}`);
