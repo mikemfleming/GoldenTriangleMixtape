@@ -3,9 +3,11 @@ var app        = express();
 var path       = require('path');
 var browserify = require('browserify-middleware');
 var routes     = express.Router();
+var bodyParser = require('body-parser');
 
 var assetFolder = path.join(`${__dirname}/client/public`);
 app.use(express.static(assetFolder));
+app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.sendFile(`${assetFolder}/index.html`);
