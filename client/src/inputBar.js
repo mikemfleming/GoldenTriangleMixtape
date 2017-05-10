@@ -12,7 +12,7 @@ export default class InputBar extends Component {
 
   render () {
     return (
-      <div>
+      <div className="text-center">
         <h1>Oh dang waddup</h1>
         <div className="col-md-6 col-md-offset-3">
             <div className="input-group">

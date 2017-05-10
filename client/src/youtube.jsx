@@ -12,11 +12,14 @@ export default class YT extends React.Component {
     };
  
     return (
-      <YouTube
-        videoId="2g811Eo7K8U"
-        opts={opts}
-        onReady={this._onReady}
-      />
+      <div className="col-md-6 col-md-offset-3 text-center">
+        <YouTube
+          videoId={this.props.media}
+          opts={opts}
+          onReady={this._onReady}
+        />
+        {this.props.media}
+      </div>
     );
   }
  

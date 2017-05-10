@@ -17,7 +17,9 @@ class App extends Component {
   }
 
   handleChange(e) {
-    this.setState({submission: e.target.value})
+    const url = e.target.value,
+          id = url.match(/^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/)[1]
+    this.setState({submission: id})
   }
 
   addToCatalog() {
@@ -29,7 +31,7 @@ class App extends Component {
       <div>
         <InputBar add={this.addToCatalog.bind(this)} handleChange={this.handleChange.bind(this)}/>
         <MediaList media={this.state.submission} />
-        <YT />
+        <YT media={this.state.submission} />
       </div>
     )
   }
