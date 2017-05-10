@@ -11,9 +11,7 @@ export default class MediaList extends Component {
 
   render () {
     return (
-      <div>
-        {this.props.media}
-      </div>
+      <div></div>
     );
   }
 
