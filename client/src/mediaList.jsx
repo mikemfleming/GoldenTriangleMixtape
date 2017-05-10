@@ -1,0 +1,20 @@
+import React, { Component } from 'react';
+
+export default class MediaList extends Component {
+  constructor (props) {
+    super(props)
+
+    this.state = {
+    }; 
+
+  }
+
+  render () {
+    return (
+      <div>
+        {this.props.media}
+      </div>
+    );
+  }
+
+}
