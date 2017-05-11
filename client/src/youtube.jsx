@@ -1,6 +1,5 @@
 import React from 'react'
 import YouTube from 'react-youtube'
-import db from '../../db.js'
 
 
 export default class YT extends React.Component {
@@ -12,8 +11,6 @@ export default class YT extends React.Component {
         autoplay: 1
       }
     };
-     window.db = db
-     console.log(db)
 
     return (
       <div className="col-md-6 col-md-offset-3 text-center">

@@ -4,11 +4,11 @@ var path       = require('path');
 var browserify = require('browserify-middleware');
 var routes     = express.Router();
 var bodyParser = require('body-parser');
-var db         = require('./db')
 
 var assetFolder = path.join(`${__dirname}/client/public`);
 app.use(express.static(assetFolder));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
 app.get('/', (req, res) => {
   res.sendFile(`${assetFolder}/index.html`);
@@ -21,7 +21,7 @@ app.use('/app-bundle.js',
 );
 
 app.post('/api/submit', (req, res) => {
-  console.log('*****************************************', req.body)
+  console.log('$$$$$$$$$$', req.body)
   res.end()
 })
 
