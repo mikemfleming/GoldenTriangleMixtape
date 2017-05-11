@@ -21,7 +21,7 @@ app.use('/app-bundle.js',
 );
 
 app.post('/api/submit', (req, res) => {
-  console.log(req.body)
+  console.log('*****************************************', req.body)
   res.end()
 })
 
