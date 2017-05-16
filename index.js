@@ -1,5 +1,7 @@
 var express    = require('express');
-var app        = express();
+var app = require('express')();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 var path       = require('path');
 var browserify = require('browserify-middleware');
 var routes     = express.Router();
@@ -25,6 +27,10 @@ app.post('/api/submit', (req, res) => {
   res.end()
 })
 
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
+
 var port = process.env.PORT || 8080;
-app.listen(port);
+http.listen(port);
 console.log(`listening on localhost: ${port}`);

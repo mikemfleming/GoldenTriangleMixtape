@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import InputBar from './inputBar.js'
 import MediaList from './mediaList.jsx'
 import YT from './youtube.jsx'
+import io from 'socket.io'
 
 class App extends Component {
   constructor (props) {
