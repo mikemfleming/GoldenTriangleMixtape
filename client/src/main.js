@@ -39,7 +39,7 @@ class App extends Component {
   }
 
   componentWillMount() {
-    fetch('http://localhost:8080/api/submissions', { method: 'get' })
+    fetch('/api/submissions', { method: 'get' })
       .then(res => res.json())
       .then(data => {
         return data.forEach(record => {
