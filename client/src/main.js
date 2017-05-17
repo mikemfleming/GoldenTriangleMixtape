@@ -24,6 +24,7 @@ class App extends Component {
 
   addToSubmissions(req) {
     const submissions = this.state.submissions.slice()
+
     submissions.push(req)
     this.setState({submissions: submissions})
     console.log(submissions)
@@ -34,7 +35,7 @@ class App extends Component {
       <div>
         <h1>List of Submissions</h1>
         <ul>
-          {this.state.submissions.map((req, idx) => <li key={idx}>{req.username}: {req.link}</li> )}
+          {this.state.submissions.map((req, idx) => <li key={idx}>{req.user_name}: {req.text}</li> )}
         </ul>
       </div>
     )

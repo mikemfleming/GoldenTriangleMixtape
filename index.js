@@ -32,7 +32,7 @@ io.on('connection', function(socket){
 
 app.post('/api/submit', (req, res) => {
   io.emit('submission', req.body)
-  console.log('$$$$$$$$$$', req.body)
+  console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$', req.body)
   res.end()
 })
 
