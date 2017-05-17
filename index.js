@@ -6,15 +6,15 @@ var path       = require('path');
 var browserify = require('browserify-middleware');
 var routes     = express.Router();
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var configDB = require('./config/database.js');
 
 var assetFolder = path.join(`${__dirname}/client/public`);
 app.use(express.static(assetFolder));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
-app.get('/', (req, res) => {
-  res.sendFile(`${assetFolder}/index.html`);
-});
+mongoose.connect(configDB.url);
 
 app.use('/app-bundle.js', 
   browserify('./client/src/main.js', {
@@ -22,19 +22,20 @@ app.use('/app-bundle.js',
   })
 );
 
+// io.on('connection', function(socket){
+//   console.log('a user connected');
+//   socket.on('disconnect', function(){
+//     console.log('user disconnected');
+//   });
+// });
 
-io.on('connection', function(socket){
-  console.log('a user connected');
-  socket.on('disconnect', function(){
-    console.log('user disconnected');
-  });
-});
+// app.post('/api/submit', (req, res) => {
+//   io.emit('submission', req.body)
+//   console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$', req.body)
+//   res.end()
+// })
 
-app.post('/api/submit', (req, res) => {
-  io.emit('submission', req.body)
-  console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$', req.body)
-  res.end()
-})
+require('./routes.js')(app, io);
 
 var port = process.env.PORT || 8080;
 http.listen(port);
