@@ -2,8 +2,6 @@ const Submissions = require('./models/submissions.js');
 const path        = require('path');
 const assetFolder = path.join(`${__dirname}/client/public`);
 
-
-
 module.exports = function (app, io) {
 
   // HOME PAGE
