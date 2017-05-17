@@ -3,17 +3,16 @@ import ReactDOM from 'react-dom'
 import InputBar from './inputBar.js'
 import MediaList from './mediaList.jsx'
 import YT from './youtube.jsx'
-import io from 'socket.io'
 
 class App extends Component {
   constructor (props) {
     super(props)
 
     this.state = {
-      submission: ''
+      submissions: []
     } 
 
-    this.addToCatalog = this.addToCatalog.bind(this)
+    io.on('submission', this.addToSubmissions.bind(this))
 
   }
 
@@ -23,16 +22,20 @@ class App extends Component {
     this.setState({submission: id})
   }
 
-  addToCatalog() {
-    // console.log(DB)
+  addToSubmissions(req) {
+    const submissions = this.state.submissions.slice()
+    submissions.push(req)
+    this.setState({submissions: submissions})
+    console.log(submissions)
   }
 
   render () {
     return (
       <div>
-        <InputBar add={this.addToCatalog.bind(this)} handleChange={this.handleChange.bind(this)}/>
-        <MediaList media={this.state.submission} />
-        <YT media={this.state.submission} />
+        <h1>List of Submissions</h1>
+        <ul>
+          {this.state.submissions.map((req, idx) => <li key={idx}>{req.username}: {req.link}</li> )}
+        </ul>
       </div>
     )
   }
