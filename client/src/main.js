@@ -61,9 +61,11 @@ class App extends Component {
       <div>
         <h1 className="text-center">Mixed Media: Slack As Remote Control</h1>
         <YT media={media} />
-        <ul className="col-md-3">
-          {this.state.submissions.reverse().map((req, idx) => <li key={idx}>{req.user}: {req.link}</li> )}
-        </ul>
+        <div>
+          <ul className="col-md-6 col-md-offset-4">
+            {this.state.submissions.reverse().map((req, idx) => <li key={idx}>{req.user}: {req.link}</li> )}
+          </ul>
+        </div>
       </div>
     )
   }
