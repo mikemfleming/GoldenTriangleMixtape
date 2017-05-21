@@ -1,5 +1,5 @@
-import React from 'react'
-import YouTube from 'react-youtube'
+import React from 'react';
+import YouTube from 'react-youtube';
 
 
 export default class YT extends React.Component {
@@ -23,10 +23,10 @@ export default class YT extends React.Component {
 
       </div>
     );
-  }
+  };
  
   _onReady(event) {
     // access to player in all event handlers via event.target 
     // event.target.pauseVideo();
-  }
-}
+  };
+};

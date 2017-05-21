@@ -1,18 +1,19 @@
-var express    = require('express');
-var app = require('express')();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
-var path       = require('path');
-var browserify = require('browserify-middleware');
-var routes     = express.Router();
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var configDB = require('./config/database.js');
+const express     = require('express');
+const app         = require('express')();
+const http        = require('http').Server(app);
+const io          = require('socket.io')(http);
+const path        = require('path');
+const browserify  = require('browserify-middleware');
+const routes      = express.Router();
+const bodyParser  = require('body-parser');
+const mongoose    = require('mongoose');
+const configDB    = require('./config/database.js');
+const assetFolder = path.join(`${__dirname}/client/public`);
 
-var assetFolder = path.join(`${__dirname}/client/public`);
 app.use(express.static(assetFolder));
+
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({extended: false}));
 
 mongoose.connect(configDB.url);
 
@@ -22,21 +23,8 @@ app.use('/app-bundle.js',
   })
 );
 
-// io.on('connection', function(socket){
-//   console.log('a user connected');
-//   socket.on('disconnect', function(){
-//     console.log('user disconnected');
-//   });
-// });
-
-// app.post('/api/submit', (req, res) => {
-//   io.emit('submission', req.body)
-//   console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$', req.body)
-//   res.end()
-// })
-
 require('./routes.js')(app, io);
 
-var port = process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 http.listen(port);
 console.log(`listening on localhost: ${port}`);
