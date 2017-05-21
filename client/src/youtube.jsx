@@ -5,22 +5,21 @@ import YouTube from 'react-youtube';
 export default class YT extends React.Component {
   render() {
     const opts = {
-      height: '390',
-      width: '640',
+      height: '480',
+      width: '854',
       playerVars: { // https://developers.google.com/youtube/player_parameters 
         autoplay: 1
       }
     };
 
     return (
-      <div className="col-md-6 col-md-offset-3 text-center">
+      <div className="col-md-8 col-md-offset-half text-center">
         <YouTube
-          videoId={this.props.media}
+          videoId={this.props.media.link}
           opts={opts}
           onReady={this._onReady}
         />
-        {this.props.media}
-
+        <h4>{this.props.media.user}</h4>
       </div>
     );
   };

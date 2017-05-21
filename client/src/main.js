@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import YT from './youtube.jsx';
+import MediaList from './mediaList.jsx';
+import Helpers from '../../helpers.js';
 
 class App extends Component {
   constructor (props) {
@@ -12,11 +14,6 @@ class App extends Component {
 
     window.io.on('submission', this.addIoToSubmissions.bind(this));
 
-  };
-
-  parseYouTubeId(link) {
-    return link.match(/^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/)[1]
-               .replace('>', '');
   };
 
   addToSubmissions(req) {
@@ -53,17 +50,18 @@ class App extends Component {
   render () {
     const submissions = this.state.submissions,
           lastSubmission = submissions[submissions.length - 1],
-          media = submissions.length > 0 ? this.parseYouTubeId(lastSubmission.link) : '';
+          media = {
+            user: lastSubmission ? lastSubmission.user : '',
+            link: submissions.length > 0 ? Helpers.parseYouTubeId(lastSubmission.link) : ''
+          }
 
     return (
       <div>
-        <h1 className="text-center">Mixed Media: Slack As Remote Control</h1>
-        <YT media={media} />
-        <div>
-          <ul className="col-md-6 col-md-offset-4">
-            {this.state.submissions.reverse().map((req, idx) => <li key={idx}>{req.user}: {req.link}</li> )}
-          </ul>
+        <div className="page-header">
+          <h1 className="text-center">Mixed Media: Slack As Remote Control</h1>
         </div>
+        <YT media={media} />
+        <MediaList mediaList={this.state.submissions} />
       </div>
     )
   };
