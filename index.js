@@ -1,3 +1,6 @@
+// establish env variables
+require('dotenv').config({ path: 'variables.env' });
+
 const express     = require('express');
 const app         = require('express')();
 const http        = require('http').Server(app);
@@ -10,8 +13,6 @@ const mongoose    = require('mongoose');
 const configDB    = require('./config/database.js');
 const assetFolder = path.join(`${__dirname}/client/public`);
 
-// establish env variables
-require('dotenv').config();
 
 app.use(express.static(assetFolder));
 

@@ -1,3 +1,3 @@
 module.exports = {
-  url: `mongodb://${process.env.userSecret}:${process.env.passSecret}@ds143201.mlab.com:43201/${process.env.idSecret}`,
+  url: `mongodb://${process.env.USER_SECRET}:${process.env.PASS_SECRET}@${process.env.DATABASE}/${process.env.ID_SECRET}`,
 };
