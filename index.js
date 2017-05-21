@@ -10,6 +10,9 @@ const mongoose    = require('mongoose');
 const configDB    = require('./config/database.js');
 const assetFolder = path.join(`${__dirname}/client/public`);
 
+// establish env variables
+require('dotenv').config();
+
 app.use(express.static(assetFolder));
 
 app.use(bodyParser.json());
