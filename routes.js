@@ -1,21 +1,15 @@
-const Submission  = require('./models/submission.js');
-const path        = require('path');
-const assetFolder = path.join(`${__dirname}/client/public`);
+// requirements
+const Media  = require('./models/media.js');
 
+// begin routes
 module.exports = function (app, io) {
 
-  // Home Page, relay to asset folder
-  app.get('/', (req, res) => {
-    res.sendFile(`${assetFolder}/index.html`);
-  });
-  
+  app.post('/api/media/submit', (req, res) => {
+    const newMedia = new Media({ media: { user: req.body.user_name, link: req.body.text }});
 
-  app.post('/api/submit', (req, res) => {
-    const submission = new Submission({ submission: { user: req.body.user_name, link: req.body.text }});
+    io.emit('media-submit', req.body);
 
-    io.emit('submission', req.body);
-
-    submission.save((err, data) => {
+    newMedia.save((err, data) => {
       if (err) {
         console.log(err);
         res.sendStatus(500);
@@ -24,14 +18,15 @@ module.exports = function (app, io) {
     });
   });
 
-  app.get('/api/submission', (req, res) => {
-    const submissions = Submission.find();
+  app.get('/api/media/all', (req, res) => {
+    const allMedia = Media.find();
 
-    submissions.exec((err, data) => {
+    allMedia.exec((err, data) => {
       if (err) {
         console.log(err);
         res.send(500);
       }
+      console.log('$$$$$$$$$$$$$$$$$', typeof data)
       res.end(JSON.stringify(data));
     });
   });

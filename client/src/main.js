@@ -4,6 +4,8 @@ import YT from './youtube.jsx';
 import MediaList from './mediaList.jsx';
 import Helpers from '../../helpers.js';
 
+// TODO: rename submission => media
+
 class App extends Component {
   constructor (props) {
     super(props);
@@ -35,12 +37,12 @@ class App extends Component {
   };
 
   componentWillMount() {
-    fetch('/api/submission', { method: 'get' })
+    fetch('/api/media/all', { method: 'get' })
       .then(res => res.json())
       .then(data => {
         return data.forEach(record => {
-          const user = record.submission.user,
-                link = record.submission.link;
+          const user = record.media.user,
+                link = record.media.link;
           this.addToSubmissions({user, link});
         })
       })
