@@ -8,8 +8,8 @@ export default class Nav extends Component {
   render () {
 
     return (
-      <div className="page-header">
-        <h1 className="text-center">Mixed Media: Slack As Remote Control</h1>
+      <div className="">
+        <h1 className="">Mixed Media: Slack As Remote Control</h1>
       </div>
     )
   };

@@ -11,15 +11,14 @@ export default class YT extends React.Component {
         autoplay: 1
       }
     };
-
     return (
-      <div className="col-md-8 col-md-offset-half text-center">
+      <div className="">
         <YouTube
-          videoId={this.props.media.link}
+          videoId={this.props.link}
           opts={opts}
           onReady={this._onReady}
         />
-        <h4>{this.props.media.user}</h4>
+        <h4>{this.props.user}</h4>
       </div>
     );
   };
