@@ -21,10 +21,11 @@ module.exports = function (app, io) {
   });
 
   app.get('/api/media/day', (req, res) => {
-
+    
+    // get posts from the last day sorted by recent
     const allMedia = Media.find({
       _id: { $gt: ObjectId.createFromTime(Date.now() / 1000 - 24 * 60 * 60) }
-    });
+    }).sort({ createdAt: 1 });
 
     allMedia.exec((err, data) => {
       if (err) {
