@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import YT from './youtube.jsx';
 import MediaList from './mediaList.jsx';
 import Helpers from '../../helpers.js';
+import Nav from './nav.jsx';
 
 // TODO: rename submission => media
 
@@ -37,14 +38,10 @@ class App extends Component {
   };
 
   componentWillMount() {
-    fetch('/api/media/all', { method: 'get' })
+    fetch('/api/media/day', { method: 'get' })
       .then(res => res.json())
       .then(data => {
-        return data.forEach(record => {
-          const user = record.media.user,
-                link = record.media.link;
-          this.addToSubmissions({user, link});
-        })
+        this.setState({submissions: data})
       })
       .catch(err => console.log(err));
   };
@@ -54,14 +51,12 @@ class App extends Component {
           lastSubmission = submissions[submissions.length - 1],
           media = {
             user: lastSubmission ? lastSubmission.user : '',
-            link: submissions.length > 0 ? Helpers.parseYouTubeId(lastSubmission.link) : ''
+            link: submissions.length > 0 ? Helpers.parseYouTubeId(lastSubmission.media.link) : ''
           }
 
     return (
       <div>
-        <div className="page-header">
-          <h1 className="text-center">Mixed Media: Slack As Remote Control</h1>
-        </div>
+        <Nav />
         <YT media={media} />
         <MediaList mediaList={this.state.submissions} />
       </div>

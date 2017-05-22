@@ -18,7 +18,7 @@ module.exports = function (app, io) {
     });
   });
 
-  app.get('/api/media/all', (req, res) => {
+  app.get('/api/media/day', (req, res) => {
     const allMedia = Media.find();
 
     allMedia.exec((err, data) => {
@@ -26,7 +26,6 @@ module.exports = function (app, io) {
         console.log(err);
         res.send(500);
       }
-      console.log('$$$$$$$$$$$$$$$$$', typeof data)
       res.end(JSON.stringify(data));
     });
   });
