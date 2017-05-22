@@ -9,11 +9,10 @@ export default class MediaList extends Component {
   render () {
 
     return (
-      <div className="col-md-4 col-md-offset-half">
+      <div className="col-md-8 col-md-offset-2">
         <ul className="list-group">
           {this.props
                .mediaList
-               .reverse()
                .map((item, idx) => <MediaItem item={item} idx={idx} /> )
           }
         </ul>

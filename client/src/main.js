@@ -57,7 +57,6 @@ class App extends Component {
     return (
       <div>
         <Nav />
-        <YT media={media} />
         <MediaList mediaList={this.state.submissions} />
       </div>
     )

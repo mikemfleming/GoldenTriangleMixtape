@@ -25,8 +25,9 @@ module.exports = function (app, io) {
     // get posts from the last day sorted by recent
     const allMedia = Media.find({
       _id: { $gt: ObjectId.createFromTime(Date.now() / 1000 - 24 * 60 * 60) }
-    }).sort({ createdAt: 1 });
+    }).sort({ createdAt: -1 });
 
+    // send it back to frontend
     allMedia.exec((err, data) => {
       if (err) {
         console.log(err);
