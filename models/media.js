@@ -5,6 +5,6 @@ const mediaSchema = mongoose.Schema({
     user: String,
     link: String,
   }
-});
+}, { timestamps: true });
 
 module.exports = mongoose.model('Media', mediaSchema);

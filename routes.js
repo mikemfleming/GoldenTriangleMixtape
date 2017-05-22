@@ -1,5 +1,7 @@
 // requirements
 const Media  = require('./models/media.js');
+const moment = require('moment');
+const ObjectId = require('mongodb').ObjectID;
 
 // begin routes
 module.exports = function (app, io) {
@@ -19,7 +21,10 @@ module.exports = function (app, io) {
   });
 
   app.get('/api/media/day', (req, res) => {
-    const allMedia = Media.find();
+
+    const allMedia = Media.find({
+      _id: { $gt: ObjectId.createFromTime(Date.now() / 1000 - 24 * 60 * 60) }
+    });
 
     allMedia.exec((err, data) => {
       if (err) {
