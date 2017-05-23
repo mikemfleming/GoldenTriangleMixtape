@@ -6,7 +6,15 @@ import Helpers from '../../helpers.js';
 export default class MediaList extends Component {
   constructor (props) {
     super(props);
+
+    this.state= {
+      currentMediaId: null,
+    };
   };
+
+  selectMedia(id) {
+    this.setState({currentMediaId: id})
+  }
 
   render () {
 
@@ -17,7 +25,11 @@ export default class MediaList extends Component {
                .mediaList
                .map((item, idx) => {
                   const id = Helpers.parseYouTubeId(item.media.link)
-                  return <MediaItem item={item} key={idx} id={id} />
+                  return <MediaItem currentMediaId={this.state.currentMediaId} 
+                                    item={item} 
+                                    key={idx} 
+                                    id={id} 
+                                    selectMedia={this.selectMedia.bind(this)} />
                })
           }
         </ul>

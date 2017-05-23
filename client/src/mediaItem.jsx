@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Helpers from '../../helpers.js';
+import YouTube from './youtube.jsx';
 
 export default class MediaItem extends Component {
   constructor (props) {
@@ -13,9 +14,12 @@ export default class MediaItem extends Component {
 
   render () {
     return (
-      <li className="" data-id={this.props.id} key={this.props.id}>
-        <img className="" src={this.genYTCoverPhoto(this.props.item.media.link)} alt={`cover-img-${this.props.id}`} />
-      </li>
+
+      this.props.currentMediaId === this.props.id
+        ? <YouTube link={this.props.id} />
+        : (<li className="" data-id={this.props.id} key={this.props.id}>
+            <img onClick={this.props.selectMedia.bind(null, this.props.id)} data-id={this.props.id} className="" src={this.genYTCoverPhoto(this.props.item.media.link)} alt={`cover-img-${this.props.id}`} />
+          </li>)
     )
   };
 
