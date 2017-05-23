@@ -8,11 +8,11 @@ export default class YT extends React.Component {
       height: '480',
       width: '854',
       playerVars: { // https://developers.google.com/youtube/player_parameters 
-        autoplay: 1
+        autoplay: 0
       }
     };
     return (
-      <div className="">
+      <div className="" data-id={this.props.id}>
         <YouTube
           videoId={this.props.link}
           opts={opts}
