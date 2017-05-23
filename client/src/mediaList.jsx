@@ -17,7 +17,7 @@ export default class MediaList extends Component {
                .mediaList
                .map((item, idx) => {
                   const id = Helpers.parseYouTubeId(item.media.link)
-                  return <MediaItem item={item} key={idx} data-id={id} />
+                  return <MediaItem item={item} key={idx} id={id} />
                })
           }
         </ul>

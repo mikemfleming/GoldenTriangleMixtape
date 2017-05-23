@@ -4,6 +4,7 @@ const mediaSchema = mongoose.Schema({
   media: {
     user: String,
     link: String,
+    time: Number,
   }
 }, { timestamps: true });
 
