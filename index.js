@@ -14,6 +14,9 @@ const mongoose = require('mongoose');
 const configDB = require('./config/database.js');
 const assetFolder = path.join(`${__dirname}/client/public`);
 
+// set mongoose's promise lib to native es6
+mongoose.Promise = global.Promise;
+
 // all requests have access to index.html and styles.css
 app.use(express.static(assetFolder));
 
