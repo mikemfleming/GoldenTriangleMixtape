@@ -18,7 +18,7 @@ export default class MediaItem extends Component {
       this.props.currentMediaId === this.props.id
         ? <YouTube link={this.props.id} />
         : (<li className="" data-id={this.props.id} key={this.props.id}>
-            <img onClick={this.props.selectMedia.bind(null, this.props.id)} data-id={this.props.id} className="" src={this.genYTCoverPhoto(this.props.item.media.link)} alt={`cover-img-${this.props.id}`} />
+            <img onClick={this.props.selectMedia.bind(null, this.props.id)} data-id={this.props.id} className="" src={this.genYTCoverPhoto(this.props.item.link)} alt={`cover-img-${this.props.id}`} />
           </li>)
     )
   };

@@ -18,6 +18,7 @@ class App extends Component {
     fetch('/api/media/day', { method: 'get' })
       .then(res => res.json())
       .then(data => {
+        console.log('data recieved: ', data)
         this.setState({media: data})
       })
       .catch(err => console.log(err));
