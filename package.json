@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "build": "webpack client/src/main.js bundle.js"
   },
   "repository": {
     "type": "git",
@@ -35,5 +36,9 @@
     "socket.io": "^2.0.1",
     "utf-8-validate": "^3.0.1",
     "youtube-iframe": "^1.0.3"
+  },
+  "devDependencies": {
+    "babel-loader": "^7.0.0",
+    "webpack": "^2.6.0"
   }
 }

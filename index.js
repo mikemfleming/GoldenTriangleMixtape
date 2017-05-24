@@ -35,11 +35,9 @@ app.get('/', (req, res) => {
 });
 
 // script tag on index.html asks for browserify
-app.use('/app-bundle.js', 
-  browserify('./client/src/main.js', { // path to parent level react component
-    'transform': [['babelify', {'presets': ['es2015', 'react']}]] // browserify options
-  })
-);
+app.get('/bundle.js', (req, res) => {
+  res.sendFile(`${__dirname}/dist/bundle.js`)
+});
 
 // configure app with routes
 require('./routes.js')(app, io);
