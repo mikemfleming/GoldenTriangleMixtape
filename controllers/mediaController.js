@@ -1,5 +1,6 @@
-const Media     = require('../models/media.js');
-const ObjectId  = require('mongodb').ObjectID;
+const Media = require('../models/media.js');
+const ObjectId = require('mongodb').ObjectID;
+const Helpers = require('../helpers.js')
 
 // Handle Submit
 exports.submit = (req, res) => {
@@ -10,7 +11,7 @@ exports.submit = (req, res) => {
 
   newMedia.save((err, data) => {
     !!err
-      ? res.status(500).send(JSON.stringify(err))
+      ? res.status(500).send(Helpers.handleMongoErrors(err))
       : res.end(JSON.stringify(data));
   });
 };
