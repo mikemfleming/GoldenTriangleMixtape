@@ -4,15 +4,13 @@ const ObjectId  = require('mongodb').ObjectID;
 // Handle Submit
 exports.submit = (req, res) => {
   const newMedia = new Media({
-    media: {
-      user: req.body.user_name,
-      link: req.body.text 
-    }
+    user: req.body.user_name,
+    link: req.body.text 
   });
 
   newMedia.save((err, data) => {
     !!err
-      ? res.sendStatus(500)
+      ? res.status(500).send(JSON.stringify(err))
       : res.end(JSON.stringify(data));
   });
 };
@@ -28,9 +26,9 @@ function getAllSince(time) {
       const cards = data.map(o => {
         const copy = {};
         copy.id = o._id;
-        copy.link = o.media.link;
-        copy.user = o.media.user;
-        copy.time = o.media.time;
+        copy.link = o.link;
+        copy.user = o.user;
+        copy.time = o.time;
         return copy;
       });
 
