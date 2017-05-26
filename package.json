@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon index.js",
-    "build": "webpack client/src/main.js bundle.js"
+    "build": "webpack --watch"
   },
   "repository": {
     "type": "git",

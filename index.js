@@ -34,7 +34,7 @@ app.get('/', (req, res) => {
   res.sendFile(`${assetFolder}/index.html`);
 });
 
-// script tag on index.html asks for browserify
+// script tag on index.html asks for processed js
 app.get('/bundle.js', (req, res) => {
   res.sendFile(`${__dirname}/dist/bundle.js`)
 });
