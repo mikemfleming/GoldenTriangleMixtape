@@ -1,7 +1,7 @@
 module.exports = {
   context: __dirname + "/client/src",
   entry: "./main.jsx",
-  devtool: 'source-map',
+  devtool: 'cheap-module-inline-source-map',
   output: {
       path: __dirname + "/dist",
       filename: "bundle.js"
