@@ -9,7 +9,7 @@ export default class Nav extends Component {
 
     return (
       <div className="">
-        <h1 className="">Mixed Media: Slack As Remote Control</h1>
+        <h1 className="">Mixed Media: Slack Is Mind Control</h1>
       </div>
     )
   };

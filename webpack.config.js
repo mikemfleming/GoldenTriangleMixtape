@@ -1,6 +1,7 @@
 module.exports = {
   context: __dirname + "/client/src",
-  entry: "./main",
+  entry: "./main.jsx",
+  devtool: 'source-map',
   output: {
       path: __dirname + "/dist",
       filename: "bundle.js"
@@ -9,10 +10,11 @@ module.exports = {
     loaders: [
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader',
         exclude: /node_modules/,
+        loader: 'babel-loader',
         query: {
-            presets: ['es2015', 'react']
+          presets: [ 'es2015', 'react', 'stage-2', 'es2015-node6' ],
+          "plugins": [ 'transform-es2015-destructuring' ]
         }
       }
     ]
