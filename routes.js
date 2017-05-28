@@ -6,8 +6,8 @@ module.exports = function (app, io) {
 
   // data retrieval
   app.get('/api/media/day', mediaController.getLastDay);
-  // app.get('/api/media/week', mediaController.getLastWeek);
-  // app.get('/api/media/month', mediaController.getLastMonth);
+  app.get('/api/media/week', mediaController.getLastWeek);
+  app.get('/api/media/month', mediaController.getLastMonth);
   // app.get('/api/media/year', mediaController.getLastYear);
 
   // Socket.io

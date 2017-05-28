@@ -5,8 +5,6 @@ import MediaList from './mediaList.jsx';
 import Helpers from '../../helpers.js';
 import Nav from './nav.jsx';
 
-// TODO: rename submission => media
-
 class App extends Component {
   constructor (props) {
     super(props);
@@ -15,22 +13,44 @@ class App extends Component {
       media: []
     } 
 
-    fetch('/api/media/day', { method: 'get' })
-      .then(res => res.json())
-      .then(data => {
-        console.log('data recieved: ', data)
-        this.setState({media: data})
-      })
-      .catch(err => console.log(err));
+    this.getLinksFromToday()
+
   };
 
-  render () {
+  getLinksFromToday() {
+    console.log('***')
+    fetch('/api/media/day', { method: 'get' })
+      .then(res => res.json() )
+      .then(media => this.setState({media}) )
+      .catch(err => console.log(err) ); 
+  }
 
+  getLinksFromThisWeek() {
+    console.log('***')
+    fetch('/api/media/week', { method: 'get' })
+      .then(res => res.json() )
+      .then(media => this.setState({media}) )
+      .catch(err => console.log(err) ); 
+  }
+
+  getLinksFromThisMonth() {
+    console.log('***')
+    fetch('/api/media/month', { method: 'get' })
+      .then(res => res.json() )
+      .then(media => this.setState({media}) )
+      .catch(err => console.log(err) ); 
+  }
+
+  render () {
+    console.log(this.state.media)
     return (
       <div>
-        <Nav />
+        <Nav getToday={this.getLinksFromToday.bind(this)} 
+             getWeek={this.getLinksFromThisWeek.bind(this)} 
+             getMonth={this.getLinksFromThisMonth.bind(this)} />
+
         {this.state.media.length > 0
-          ? <MediaList mediaList={this.state.media} />
+          ? <MediaList media={this.state.media} />
           : <h1>Loading...</h1>
         }
       </div>
