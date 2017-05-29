@@ -13,46 +13,36 @@ class App extends Component {
       media: []
     } 
 
-    this.getLinksFromToday()
+    this.getLinksFrom('today');
 
   };
 
-  getLinksFromToday() {
-    console.log('***')
-    fetch('/api/media/day', { method: 'get' })
-      .then(res => res.json() )
-      .then(media => this.setState({media}) )
-      .catch(err => console.log(err) ); 
-  }
+  getLinksFrom(period) {
+    const mediaFrom = {
+      today: '/api/media/day',
+      thisWeek: '/api/media/week',
+      thisMonth: '/api/media/month'
+    };
 
-  getLinksFromThisWeek() {
-    console.log('***')
-    fetch('/api/media/week', { method: 'get' })
-      .then(res => res.json() )
-      .then(media => this.setState({media}) )
-      .catch(err => console.log(err) ); 
-  }
-
-  getLinksFromThisMonth() {
-    console.log('***')
-    fetch('/api/media/month', { method: 'get' })
+    fetch( mediaFrom[period] , { method: 'get' })
       .then(res => res.json() )
       .then(media => this.setState({media}) )
       .catch(err => console.log(err) ); 
   }
 
   render () {
-    console.log(this.state.media)
+
+    console.log('got media: ', this.state.media)
+    
     return (
       <div>
-        <Nav getToday={this.getLinksFromToday.bind(this)} 
-             getWeek={this.getLinksFromThisWeek.bind(this)} 
-             getMonth={this.getLinksFromThisMonth.bind(this)} />
+        <Nav getLinksFrom={this.getLinksFrom.bind(this)} />
 
         {this.state.media.length > 0
           ? <MediaList media={this.state.media} />
           : <h1>Loading...</h1>
         }
+
       </div>
     )
   };
