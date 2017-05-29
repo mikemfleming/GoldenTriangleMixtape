@@ -9,3 +9,4 @@ GTM is a collection of user submitted media organized by popularity and time. Li
 * Add UX to Slack responses
 * Add users
 * Add votes (counting reactions?)
+* Enforce media uniqueness
