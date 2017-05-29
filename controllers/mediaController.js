@@ -4,6 +4,7 @@ const Helpers = require('../helpers.js')
 
 // Handle Submit
 exports.submit = (req, res) => {
+  console.log('***********', req.body)
   const newMedia = new Media({
     user: req.body.user_name,
     link: req.body.text 
