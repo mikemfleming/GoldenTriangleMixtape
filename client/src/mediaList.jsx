@@ -19,7 +19,7 @@ export default class MediaList extends Component {
   render () {
 
     return (
-      <div className="media-list text-center">
+      <div className="media-list">
         {this.props.media.map((source, idx) => {
           const id = Helpers.parseYouTubeId(source.link)
 

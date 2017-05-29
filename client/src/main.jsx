@@ -36,7 +36,7 @@ class App extends Component {
     console.log('got media: ', this.state.media)
     
     return (
-      <div>
+      <div className="text-center">
         <Nav getLinksFrom={this.getLinksFrom.bind(this)} />
 
         {this.state.media.length > 0

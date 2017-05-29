@@ -1,5 +1,6 @@
 import React from 'react';
 import YouTube from 'react-youtube';
+import Helpers from '../../helpers.js';
 
 
 export default class YT extends React.Component {
@@ -8,13 +9,13 @@ export default class YT extends React.Component {
       height: '360',
       width: '480',
       playerVars: { // https://developers.google.com/youtube/player_parameters 
-        autoplay: 0
+        autoplay: 1
       }
     };
     return (
       <div className="media-item__yt-vid" data-id={this.props.id}>
         <YouTube
-          videoId={this.props.source.link}
+          videoId={Helpers.parseYouTubeId(this.props.source.link)}
           opts={opts}
           onReady={this._onReady}
         />
