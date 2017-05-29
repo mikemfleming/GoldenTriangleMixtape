@@ -1,3 +1,9 @@
 .nav__app-title {
   font-family: 'Permanent Marker', cursive;
 }
+
+.text-center {text-align: center;}
+
+.media-item, .media-item__yt-vid {
+  padding: 1rem;
+}

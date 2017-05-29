@@ -10,4 +10,4 @@ GTM is a collection of user submitted media organized by popularity and time. Li
 * Add users
 * Add votes (counting reactions?)
 * Enforce media uniqueness X
-* Rough styling
+* Use user_name and time

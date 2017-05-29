@@ -13,15 +13,17 @@ export default class MediaItem extends Component {
   }
 
   render () {
+    console.log(this.props.source)
     return (
 
       this.props.currentMediaId === this.props.id
-        ? <YouTube link={this.props.id} />
-        : (<li data-id={this.props.id} key={this.props.id}>
+        ? <YouTube source={this.props.source} />
+        : (<div className="media-item" data-id={this.props.id} key={this.props.id}>
             <img onClick={this.props.selectMedia.bind(null, this.props.id)} 
                  src={this.getYTCoverPhoto(this.props.source.link)} 
                  alt={`cover-img-${this.props.id}`} />
-          </li>)
+            <h5>Submitted by {this.props.source.user}</h5>
+          </div>)
     )
   };
 

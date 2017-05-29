@@ -8,8 +8,8 @@ export default class Nav extends Component {
   render () {
 
     return (
-      <div className="">
-        <h1 className="">Mixed Media: Slack Is Mind Control</h1>
+      <div className="text-center">
+        <h1 className="nav__app-title">Mixed Media: Slack Is Mind Control</h1>
         <h3>See Links From:</h3>
         <button onClick={this.props.getLinksFrom.bind(null, 'today')}>Today</button>
         <button onClick={this.props.getLinksFrom.bind(null, 'thisWeek')}>This Week</button>

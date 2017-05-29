@@ -19,21 +19,19 @@ export default class MediaList extends Component {
   render () {
 
     return (
-      <div className="">
-        <ul className="">
-          {this.props.media.map((source, idx) => {
-            const id = Helpers.parseYouTubeId(source.link)
+      <div className="media-list text-center">
+        {this.props.media.map((source, idx) => {
+          const id = Helpers.parseYouTubeId(source.link)
 
-            return (<MediaItem 
-              {...this.state}
-              source={source} 
-              key={idx} 
-              id={id} 
-              selectMedia={this.selectMedia.bind(this)} 
-            />)
-         })
-          }
-        </ul>
+          return (<MediaItem 
+            {...this.state}
+            source={source} 
+            key={idx} 
+            id={id} 
+            selectMedia={this.selectMedia.bind(this)} 
+          />)
+       })
+        }
       </div>
     )
   };
