@@ -45,11 +45,11 @@ function getAllSince(time) {
 // Time Generators
 const yesterday = () => ObjectId.createFromTime((Date.now() / 1000) - (24*60*60));
 const lastWeek  = () => ObjectId.createFromTime(new Date().setDate(new Date().getDate()-7));
-const lastMonth = () => ObjectId.createFromTime(new Date().setDate(new Date().getDate()-7*52));
-// const lastYear  = () => ObjectId.createFromTime(new Date().setYear(new Date().getFullYear()-1));
+const lastMonth = () => ObjectId.createFromTime(new Date().setDate(new Date().getDate()-7*4));
+const lastYear  = () => ObjectId.createFromTime(new Date().setDate(new Date().getDate()-7*52));
 
 // Data Retrieval
 exports.getLastDay    = getAllSince( yesterday()  );
 exports.getLastWeek   = getAllSince( lastWeek()   );
 exports.getLastMonth  = getAllSince( lastMonth()  );
-// exports.getLastYear   = getAllSince( lastYear()   );
+exports.getLastYear   = getAllSince( lastYear()   );

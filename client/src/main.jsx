@@ -21,7 +21,8 @@ class App extends Component {
     const mediaFrom = {
       today: '/api/media/day',
       thisWeek: '/api/media/week',
-      thisMonth: '/api/media/month'
+      thisMonth: '/api/media/month',
+      thisYear: '/api/media/year',
     };
 
     fetch( mediaFrom[period] , { method: 'get' })

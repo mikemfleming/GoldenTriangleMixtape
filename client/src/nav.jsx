@@ -14,7 +14,7 @@ export default class Nav extends Component {
         <button onClick={this.props.getLinksFrom.bind(null, 'today')}>Today</button>
         <button onClick={this.props.getLinksFrom.bind(null, 'thisWeek')}>This Week</button>
         <button onClick={this.props.getLinksFrom.bind(null, 'thisMonth')}>This Month</button>
-        <button>This Year</button>
+        <button onClick={this.props.getLinksFrom.bind(null, 'thisYear')}>This Year</button>
       </div>
     )
   };
