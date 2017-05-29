@@ -40,9 +40,7 @@
     "react-youtube-player": "^2.0.0",
     "socket.io": "^2.0.1",
     "utf-8-validate": "^3.0.1",
-    "youtube-iframe": "^1.0.3"
-  },
-  "devDependencies": {
+    "youtube-iframe": "^1.0.3",
     "babel-loader": "^7.0.0",
     "babel-plugin-syntax-object-rest-spread": "^6.13.0",
     "babel-preset-es2015-node6": "^0.4.0",
