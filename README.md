@@ -17,3 +17,5 @@ GTM is a collection of user submitted media organized by popularity and time. Li
 * Add transition media-item => player & player => media-item
 * Videos currently not playing
   - Custom yt component plz
+* Fix getThisMonth
+* Add slack /command to open in browser
